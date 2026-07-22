@@ -13,7 +13,7 @@ const items = [
   { label: "Promo", href: "/promo", icon: "Tag" },
 ];
 
-import { Home, Crown, Tag } from "lucide-react";
+import { Chrome as Home, Crown, Tag } from "lucide-react";
 
 const iconMap: Record<string, typeof Home> = {
   Home,
