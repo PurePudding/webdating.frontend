@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #fff8fb;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: linear-gradient(135deg, #ff5fa2 0%, #ff7fb8 50%, #ffd84d 100%);
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, #7a5af8 0%, #9378f7 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fff1f8 100%);
+  }
+
+  .gradient-featured-border {
+    background: linear-gradient(135deg, #ff5fa2, #7a5af8, #ffd84d);
+    padding: 2px;
+    border-radius: 28px;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #ff5fa2, #7a5af8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
