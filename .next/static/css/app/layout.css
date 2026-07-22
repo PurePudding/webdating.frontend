@@ -861,6 +861,9 @@ video {
 .min-h-screen {
   min-height: 100vh;
 }
+.min-h-\[70vh\] {
+  min-height: 70vh;
+}
 .w-10 {
   width: 2.5rem;
 }
@@ -910,8 +913,14 @@ video {
 .w-full {
   width: 100%;
 }
+.w-\[200px\] {
+  width: 200px;
+}
 .min-w-\[260px\] {
   min-width: 260px;
+}
+.min-w-\[200px\] {
+  min-width: 200px;
 }
 .max-w-2xl {
   max-width: 42rem;
@@ -924,6 +933,9 @@ video {
 }
 .max-w-md {
   max-width: 28rem;
+}
+.max-w-3xl {
+  max-width: 48rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1009,6 +1021,16 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 .overflow-hidden {
   overflow: hidden;
@@ -1493,6 +1515,11 @@ video {
 .hover\:text-primary:hover {
   --tw-text-opacity: 1;
   color: rgb(255 95 162 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-primary-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(232 71 138 / var(--tw-text-opacity, 1));
 }
 
 .hover\:opacity-100:hover {

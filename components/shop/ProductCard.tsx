@@ -11,30 +11,34 @@ import { Badge } from "@/components/ui/badge";
 interface ProductCardProps {
   product: Product;
   index?: number;
+  variant?: "default" | "compact";
 }
 
-export function ProductCard({ product, index = 0 }: ProductCardProps) {
-  const Wrapper = product.featured ? "div" : "div";
-
+export function ProductCard({
+  product,
+  index = 0,
+  variant = "default",
+}: ProductCardProps) {
   const card = (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
-      whileHover={{ y: -6 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ duration: 0.35, delay: index * 0.05 }}
+      whileHover={{ y: -4 }}
       className={cn(
         "group relative flex flex-col overflow-hidden bg-card shadow-card transition-shadow duration-300 hover:shadow-card-hover",
-        product.featured ? "rounded-[26px]" : "rounded-3xl",
+        variant === "compact" ? "w-[200px] flex-shrink-0" : "w-full",
       )}
+      style={{ borderRadius: "24px" }}
     >
       {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-primary-50">
+      <div className="relative aspect-square overflow-hidden bg-primary-50">
         <Image
           src={product.image}
           alt={product.title}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 200px, 300px"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
@@ -67,18 +71,21 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-4 md:p-5">
-        <h3 className="mb-1 line-clamp-1 text-base font-bold text-foreground md:text-lg">
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="mb-1 line-clamp-1 text-base font-bold text-foreground">
           {product.title}
         </h3>
-        <p className="mb-3 line-clamp-2 text-sm text-gray-500">
-          {product.description}
-        </p>
+
+        {variant === "default" && (
+          <p className="mb-3 line-clamp-2 text-sm text-gray-500">
+            {product.description}
+          </p>
+        )}
 
         {/* Price */}
         <div className="mt-auto">
           <div className="flex items-baseline gap-2">
-            <span className="text-xl font-bold text-primary md:text-2xl">
+            <span className="text-xl font-bold text-primary">
               {formatPrice(product.price)}
             </span>
             {product.oldPrice && (
@@ -91,7 +98,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           <Link href={`/shop/${product.id}`}>
             <motion.button
               whileTap={{ scale: 0.95 }}
-              className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-primary py-3 text-sm font-bold text-white shadow-soft transition-colors hover:bg-primary-600"
+              className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-primary py-2.5 text-sm font-bold text-white shadow-soft transition-colors hover:bg-primary-600"
             >
               <ShoppingBag className="h-4 w-4" />
               Beli Sekarang
@@ -102,13 +109,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     </motion.div>
   );
 
-  if (product.featured) {
-    return (
-      <div className="gradient-featured-border">
-        {card}
-      </div>
-    );
+  if (product.featured && variant === "default") {
+    return <div className="gradient-featured-border">{card}</div>;
   }
 
-  return <Wrapper>{card}</Wrapper>;
+  return card;
 }
